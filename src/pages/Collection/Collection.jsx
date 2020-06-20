@@ -1,11 +1,16 @@
 import React from 'react';
 import './Collection.styles.scss';
-import CollectionItem from '../../components/CollectionItem/CollectionItem';
+import { connect } from 'react-redux';
+import { selectCollection } from '../../redux/Shop/Shop.selectors';
 
-const Collection = ({ match }) => (
+const Collection = ({ collection }) => (
   <div className="category">
     <h2>COLLECTION PAGE</h2>
   </div>
 );
 
-export default Collection;
+const mapStateToProps = (state, ownProps) => ({
+  collection: selectCollection(ownProps.match.params.collectionId)(state),
+});
+
+export default connect(mapStateToProps)(Collection);
