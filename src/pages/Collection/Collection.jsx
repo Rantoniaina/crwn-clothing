@@ -1,11 +1,11 @@
 import React from 'react';
-import './Category.styles.scss';
+import './Collection.styles.scss';
 import CollectionItem from '../../components/CollectionItem/CollectionItem';
 
-const Category = ({ match }) => (
+const Collection = ({ match }) => (
   <div className="category">
-    <h2>CATEGORY PAGE</h2>
+    <h2>COLLECTION PAGE</h2>
   </div>
 );
 
-export default Category;
+export default Collection;
