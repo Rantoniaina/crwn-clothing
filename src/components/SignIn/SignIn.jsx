@@ -1,16 +1,17 @@
-import React, { Component } from 'react';
-
-import './SignIn.styles.scss';
-import FormInput from '../../components/FormInput/FormInput';
-import CustomButton from '../../components/CustomButton/CustomButton';
-import { auth, signInWithGoogle } from '../../firebase/Firebase.utils';
+import React, { Component } from "react";
+import "./SignIn.styles.scss";
+import FormInput from "../../components/FormInput/FormInput";
+import CustomButton from "../../components/CustomButton/CustomButton";
+import { auth, signInWithGoogle } from "../../firebase/Firebase.utils";
+import { googleSignInStart } from "../../redux/User/User.actions";
+import { connect } from "react-redux";
 
 class SignIn extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: '',
-      password: '',
+      email: "",
+      password: "",
     };
   }
 
@@ -20,15 +21,15 @@ class SignIn extends Component {
     try {
       await auth.signInWithEmailAndPassword(email, password);
       this.setState({
-        email: '',
-        password: '',
+        email: "",
+        password: "",
       });
     } catch (error) {
       console.log(error.message);
     }
     this.setState({
-      email: '',
-      password: '',
+      email: "",
+      password: "",
     });
   };
 
@@ -38,6 +39,7 @@ class SignIn extends Component {
   };
 
   render() {
+    const { googleSignInStart } = this.props;
     return (
       <div className="sign-in">
         <h2>I already have an account</h2>
@@ -63,11 +65,11 @@ class SignIn extends Component {
             <CustomButton type="submit">Sign in</CustomButton>
             <CustomButton
               type="button"
-              onClick={signInWithGoogle}
+              onClick={googleSignInStart}
               isGoogleSignIn
             >
-              {' '}
-              Sign in with Google{' '}
+              {" "}
+              Sign in with Google{" "}
             </CustomButton>
           </div>
         </form>
@@ -76,4 +78,8 @@ class SignIn extends Component {
   }
 }
 
-export default SignIn;
+const mapDispatchToProps = (dispatch) => ({
+  googleSignInStart: () => dispatch(googleSignInStart()),
+});
+
+export default connect(null, mapDispatchToProps)(SignIn);
