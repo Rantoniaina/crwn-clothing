@@ -20,10 +20,12 @@ class Shop extends React.Component {
 
   render() {
     const { match } = this.props;
-    <div className="shop-page">
-      <Route exact path={`${match.path}`} component={CollectionsOverview} />
-      <Route path={`${match.path}/:collectionId`} component={Collection} />
-    </div>;
+    return (
+      <div className="shop-page">
+        <Route exact path={`${match.path}`} component={CollectionsOverview} />
+        <Route path={`${match.path}/:collectionId`} component={Collection} />
+      </div>
+    );
   }
 }
 

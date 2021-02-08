@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './Collection.styles.scss';
-import { connect } from 'react-redux';
-import { selectCollection } from '../../redux/Shop/Shop.selectors';
 import CollectionItem from '../../components/CollectionItem/CollectionItem';
+import CollectionsContext from '../../contexts/collections/Collections.context';
 
-const Collection = ({ collection }) => {
+const Collection = ({ match }) => {
+  const collections = useContext(CollectionsContext);
+  const collection = collections[match.params.collectionId];
   const { title, items } = collection;
   return (
     <div className="category">
@@ -17,9 +18,4 @@ const Collection = ({ collection }) => {
     </div>
   );
 };
-
-const mapStateToProps = (state, ownProps) => ({
-  collection: selectCollection(ownProps.match.params.collectionId)(state),
-});
-
-export default connect(mapStateToProps)(Collection);
+export default Collection;
