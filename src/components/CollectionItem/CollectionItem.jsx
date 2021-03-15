@@ -1,11 +1,11 @@
-import React from 'react';
-import './CollectionItem.styles.scss';
-import CustomButton from '../CustomButton/CustomButton';
-import { connect } from 'react-redux';
-import { addItem } from '../../redux/Cart/Cart.actions';
+import React, { useContext } from "react";
+import "./CollectionItem.styles.scss";
+import CustomButton from "../CustomButton/CustomButton";
+import { CartContext } from "../../providers/cart/Cart.provider";
 
-const CollectionItem = ({ item, addItem }) => {
+const CollectionItem = ({ item }) => {
   const { name, price, imageUrl } = item;
+  const { addItem } = useContext(CartContext);
   return (
     <div className="collection-item">
       <div
@@ -25,8 +25,4 @@ const CollectionItem = ({ item, addItem }) => {
   );
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  addItem: (item) => dispatch(addItem(item)),
-});
-
-export default connect(null, mapDispatchToProps)(CollectionItem);
+export default CollectionItem;

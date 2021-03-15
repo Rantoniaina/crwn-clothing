@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { auth } from "../../firebase/Firebase.utils";
 import { ReactComponent as Logo } from "../../assets/crown.svg";
 import CartIcon from "../CartIcon/CartIcon";
@@ -10,12 +10,11 @@ import {
   OptionLink,
 } from "./styles";
 import CurrentUserContext from "../../contexts/currentUser/CurrentUser.context";
-import CartContext from "../../contexts/cart/Cart.context";
+import { CartContext } from "../../providers/cart/Cart.provider";
 
 const Header = () => {
   const currentUser = useContext(CurrentUserContext);
-  const [hidden, setHidden] = useState(true);
-  const toggleHidden = () => setHidden(!hidden);
+  const { hidden } = useContext(CartContext);
 
   return (
     <HeaderContainer>
@@ -32,14 +31,7 @@ const Header = () => {
         ) : (
           <OptionLink to="/signin">SIGN IN</OptionLink>
         )}
-        <CartContext.Provider
-          value={{
-            hidden,
-            toggleHidden,
-          }}
-        >
-          <CartIcon />
-        </CartContext.Provider>
+        <CartIcon />
       </OptionsContainer>
       {!hidden && <CartDropdown />}
     </HeaderContainer>
