@@ -42,7 +42,6 @@ const CartProvider = ({ children }) => {
         cartItemsCount,
         removeItem,
         clearItemFromCart,
-        cartItemsCount
       }}
     >
       {children}
