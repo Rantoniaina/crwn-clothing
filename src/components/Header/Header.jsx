@@ -3,7 +3,7 @@ import { auth } from "../../firebase/Firebase.utils";
 import { ReactComponent as Logo } from "../../assets/crown.svg";
 import { connect } from "react-redux";
 import { default as CartIcon } from "../CartIcon/CartIconContainer";
-import CartDropdown from "../CartDropdown/CartDropdown";
+import { default as CartDropdown } from "../CartDropdown/CartDropdownContainer";
 import { createStructuredSelector } from "reselect";
 import { selectCurrentUser } from "../../redux/User/User.selectors";
 import {
