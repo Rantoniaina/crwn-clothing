@@ -1,8 +1,6 @@
 import React from 'react';
 import './CollectionItem.styles.scss';
 import CustomButton from '../CustomButton/CustomButton';
-import { connect } from 'react-redux';
-import { addItem } from '../../redux/Cart/Cart.actions';
 
 const CollectionItem = ({ item, addItem }) => {
   const { name, price, imageUrl } = item;
@@ -25,8 +23,4 @@ const CollectionItem = ({ item, addItem }) => {
   );
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  addItem: (item) => dispatch(addItem(item)),
-});
-
-export default connect(null, mapDispatchToProps)(CollectionItem);
+export default CollectionItem;
