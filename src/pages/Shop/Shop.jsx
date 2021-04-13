@@ -1,7 +1,7 @@
 import React from "react";
 import { default as CollectionsOverview } from "../../components/CollectionsOverview/CollectionsOverviewContainer";
 import { Route } from "react-router-dom";
-import Collection from "../Collection/Collection";
+import { default as Collection } from "../Collection/CollectionContainer";
 import {
   firestore,
   convertCollectionsSnapshotToMap,

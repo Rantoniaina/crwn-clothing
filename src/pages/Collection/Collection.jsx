@@ -1,7 +1,5 @@
 import React from 'react';
 import './Collection.styles.scss';
-import { connect } from 'react-redux';
-import { selectCollection } from '../../redux/Shop/Shop.selectors';
 import CollectionItem from '../../components/CollectionItem/CollectionItem';
 
 const Collection = ({ collection }) => {
@@ -18,8 +16,4 @@ const Collection = ({ collection }) => {
   );
 };
 
-const mapStateToProps = (state, ownProps) => ({
-  collection: selectCollection(ownProps.match.params.collectionId)(state),
-});
-
-export default connect(mapStateToProps)(Collection);
+export default Collection;
