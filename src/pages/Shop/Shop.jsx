@@ -1,5 +1,5 @@
 import React from "react";
-import CollectionsOverview from "../../components/CollectionsOverview/CollectionsOverview";
+import { default as CollectionsOverview } from "../../components/CollectionsOverview/CollectionsOverviewContainer";
 import { Route } from "react-router-dom";
 import Collection from "../Collection/Collection";
 import {
