@@ -1,7 +1,7 @@
 import { gql } from "apollo-boost";
 
 export const typeDefs = gql`
-  extends type Mutation {
+  extend type Mutation {
     ToggleCartHidden: Boolean!
   }
 `;
